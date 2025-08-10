@@ -7,13 +7,15 @@ import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
 import { FloatLabel } from 'primeng/floatlabel';
+import { LoginComponent } from './auth/components/login/login.component';
+import { RegisterComponent } from './auth/components/register/register.component';
 interface AutoCompleteCompleteEvent {
     originalEvent: Event;
     query: string;
 }
 @Component({
     selector: 'app-root',
-    imports: [RouterOutlet, ReactiveFormsModule, AutoCompleteModule, ButtonModule, FloatLabel],
+    imports: [RouterOutlet, ReactiveFormsModule, AutoCompleteModule, ButtonModule, FloatLabel,LoginComponent,RegisterComponent],
     standalone: true,
     templateUrl: './app.component.html',
     styleUrl: './app.component.css'
@@ -25,49 +27,49 @@ export class AppComponent {
     title = 'paytrack-front';
     //    messageService = inject(MessageService);
 
-    items: any[] | undefined;
+    // items: any[] | undefined;
 
-    signUpForm!: FormGroup;
-    signInForm!: FormGroup;
+    // signUpForm!: FormGroup;
+    // signInForm!: FormGroup;
 
-    formSubmitted: boolean = false;
-signUpFields = [
-  { name: 'fullName', label: 'Full Name', type: 'text', placeholder: 'Enter full name' },
-  { name: 'ownerName', label: 'Owner Name', type: 'text', placeholder: 'Enter owner name' },
-  { name: 'ownerEmail', label: 'Owner Email', type: 'email', placeholder: 'Enter owner email' }
-];
-signInFields = [
-  { name: 'fullName', label: 'Full Name', type: 'text', placeholder: 'Enter full name' },
-  { name: 'password', label: 'Password', type: 'password', placeholder: 'Enter Password' },
-];
-    constructor(private fb: FormBuilder) {
-        this.signUpForm = this.fb.group({
-            fullName: ['', Validators.required],
-            ownerName: ['', Validators.required],
-            ownerEmail: ['', Validators.required],
-        });
-        this.signInForm = this.fb.group({
-            fullName: ['', Validators.required],
-            password: ['', Validators.required],
-        });
-    }
-    search(event: AutoCompleteCompleteEvent) {
-        this.items = [...Array(10).keys()].map((item) => event.query + '-' + item);
-    }
+    // formSubmitted: boolean = false;
+// signUpFields = [
+//   { name: 'fullName', label: 'Full Name', type: 'text', placeholder: 'Enter full name' },
+//   { name: 'ownerName', label: 'Owner Name', type: 'text', placeholder: 'Enter owner name' },
+//   { name: 'ownerEmail', label: 'Owner Email', type: 'email', placeholder: 'Enter owner email' }
+// ];
+// signInFields = [
+//   { name: 'fullName', label: 'Full Name', type: 'text', placeholder: 'Enter full name' },
+//   { name: 'password', label: 'Password', type: 'password', placeholder: 'Enter Password' },
+// ];
+    // constructor(private fb: FormBuilder) {
+    //     this.signUpForm = this.fb.group({
+    //         fullName: ['', Validators.required],
+    //         ownerName: ['', Validators.required],
+    //         ownerEmail: ['', Validators.required],
+    //     });
+    //     this.signInForm = this.fb.group({
+    //         fullName: ['', Validators.required],
+    //         password: ['', Validators.required],
+    //     });
+    // }
+    // search(event: AutoCompleteCompleteEvent) {
+    //     this.items = [...Array(10).keys()].map((item) => event.query + '-' + item);
+    // }
 
-    onSubmit() {
-        this.formSubmitted = true;
-        if (this.signUpForm) {
+    // onSubmit() {
+    //     this.formSubmitted = true;
+    //     if (this.signUpForm) {
 
-            if (this.signUpForm.valid) {
-                this.signUpForm.reset();
+    //         if (this.signUpForm.valid) {
+    //             this.signUpForm.reset();
                 
-                this.formSubmitted = false;
-            }
-        }
-    }
+    //             this.formSubmitted = false;
+    //         }
+    //     }
+    // }
 
-    createAccountFlag(flag:boolean):void{
-        this.isSignedIn = !this.isSignedIn
-    }
+    // createAccountFlag(flag:boolean):void{
+    //     this.isSignedIn = !this.isSignedIn
+    // }
 }

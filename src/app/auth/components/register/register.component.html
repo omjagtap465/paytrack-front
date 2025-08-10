@@ -1,0 +1,37 @@
+
+    <div class="flex flex-col items-center gap-4">
+
+      <div class="flex flex-col items-center gap-2 w-full">
+        <div class="text-surface-900 dark:text-surface-0 text-2xl font-semibold leading-tight text-center w-full">
+          Create Your Organization Account Now
+        </div>
+        <div class="text-center w-full">
+          <span class="text-surface-700 dark:text-surface-200 leading-normal">Do you have an account?</span>
+          <a class="text-primary font-medium ml-1 cursor-pointer hover:text-primary-emphasis"
+            (click)="createAccountFlag()">Sign In</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Form Fields -->
+    <div class="flex flex-col gap-6 w-full" [formGroup]="signUpForm">
+
+      @for (field of signUpFields; track field.name) {
+      <div class="flex flex-col gap-2 w-full">
+        <label [for]="field.name" class="text-surface-900 dark:text-surface-0 font-medium leading-normal">
+          {{ field.label }}
+        </label>
+        <input pInputText [id]="field.name" [type]="field.type" [formControlName]="field.name"
+          [placeholder]="field.placeholder" class="w-full px-3 py-2 shadow-sm rounded-lg" />
+      </div>
+      }
+    </div>
+
+    <!-- Submit Button -->
+    <button (click)="onSubmit()" pButton label="Sign Up" icon="pi pi-user"
+      class="w-full py-2 rounded-lg flex justify-center items-center gap-2">
+      <ng-template pTemplate="icon">
+        <i class="pi pi-user text-base leading-normal"></i>
+      </ng-template>
+    </button>
+
